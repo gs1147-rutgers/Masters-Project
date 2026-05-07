@@ -1,0 +1,53 @@
+{
+  "model": "VIPEEGNet",
+  "recipe": "Sunyuri VIPEEGNet \u2014 2-stage, EffV2B3, SumToOne Conv1D. Native: no TTA, no temperature.",
+  "n_folds": 5,
+  "batch_size": 16,
+  "stages": [
+    15,
+    5
+  ],
+  "seed": 2024,
+  "fair_splits": "patient_folds.csv",
+  "tta": "none",
+  "per_fold": [
+    {
+      "fold": 0,
+      "n_valid_hq": 1341,
+      "kld_hq_native": 0.2198701649904251,
+      "kld_hq_raw": 0.2198701649904251,
+      "temperature": 1.0
+    },
+    {
+      "fold": 1,
+      "n_valid_hq": 1378,
+      "kld_hq_native": 0.2263708859682083,
+      "kld_hq_raw": 0.2263708859682083,
+      "temperature": 1.0
+    },
+    {
+      "fold": 2,
+      "n_valid_hq": 1251,
+      "kld_hq_native": 0.22155117988586426,
+      "kld_hq_raw": 0.22155117988586426,
+      "temperature": 1.0
+    },
+    {
+      "fold": 3,
+      "n_valid_hq": 1242,
+      "kld_hq_native": 0.21147401630878448,
+      "kld_hq_raw": 0.21147401630878448,
+      "temperature": 1.0
+    },
+    {
+      "fold": 4,
+      "n_valid_hq": 1138,
+      "kld_hq_native": 0.222329780459404,
+      "kld_hq_raw": 0.222329780459404,
+      "temperature": 1.0
+    }
+  ],
+  "oof_kld_hq_native": 0.22041061520576477,
+  "oof_kld_hq_raw": 0.22041061520576477,
+  "n_oof_hq": 6350
+}

@@ -1,0 +1,65 @@
+{
+  "model": "TCSNet-Optimized",
+  "recipe": "TCS-Net + 6 optimizations (SpecAugment, SumToOne, random shift, EMA, extended 15+12+6, temperature scaling) \u2014 fair-comparison variant",
+  "n_folds": 5,
+  "batch_size": 16,
+  "stages": [
+    15,
+    12,
+    6
+  ],
+  "seed": 2024,
+  "fair_splits": "patient_folds.csv",
+  "tta": "identity + time-flip (2x)",
+  "per_fold": [
+    {
+      "fold": 0,
+      "n_valid_hq": 1341,
+      "kld_hq_native": 0.40788206458091736,
+      "kld_hq_raw": 0.4117513597011566,
+      "kld_hq_with_T_noTTA": 0.41050830483436584,
+      "temperature": 1.0500000000000005,
+      "train_seconds": 2781.178173303604
+    },
+    {
+      "fold": 1,
+      "n_valid_hq": 1378,
+      "kld_hq_native": 0.3798794448375702,
+      "kld_hq_raw": 0.38396888971328735,
+      "kld_hq_with_T_noTTA": 0.38060131669044495,
+      "temperature": 1.1000000000000005,
+      "train_seconds": 2694.013480901718
+    },
+    {
+      "fold": 2,
+      "n_valid_hq": 1251,
+      "kld_hq_native": 0.38398221135139465,
+      "kld_hq_raw": 0.3905318081378937,
+      "kld_hq_with_T_noTTA": 0.3862060308456421,
+      "temperature": 1.1000000000000005,
+      "train_seconds": 2745.2281317710876
+    },
+    {
+      "fold": 3,
+      "n_valid_hq": 1242,
+      "kld_hq_native": 0.3342815637588501,
+      "kld_hq_raw": 0.3350244164466858,
+      "kld_hq_with_T_noTTA": 0.3350244164466858,
+      "temperature": 1.0000000000000004,
+      "train_seconds": 2868.001523256302
+    },
+    {
+      "fold": 4,
+      "n_valid_hq": 1138,
+      "kld_hq_native": 0.3682851493358612,
+      "kld_hq_raw": 0.3726271986961365,
+      "kld_hq_with_T_noTTA": 0.37048327922821045,
+      "temperature": 1.1000000000000005,
+      "train_seconds": 2804.1379959583282
+    }
+  ],
+  "oof_kld_hq_native": 0.3756050169467926,
+  "oof_kld_hq_raw": 0.3795233368873596,
+  "n_oof_hq": 6350,
+  "total_seconds": 13899.773277282715
+}

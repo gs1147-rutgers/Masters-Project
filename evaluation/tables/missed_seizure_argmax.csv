@@ -1,0 +1,4 @@
+model,threshold,n_seizure,n_missed,argmax_seizure_below_tau,argmax_LPD,argmax_GPD,argmax_LRDA,argmax_GRDA,argmax_Other,near_miss_count,near_miss_pct_of_missed,total_miss_count,total_miss_pct_of_missed
+EffNetB0,0.0722708106040954,348,17,0,5,7,0,0,5,12,0.7058823529411765,5,0.29411764705882354
+TCSNet,0.0123185403645038,348,17,0,2,3,0,0,12,5,0.29411764705882354,12,0.7058823529411765
+VIPEEGNet,0.0185267198830842,348,17,0,3,0,1,2,11,6,0.35294117647058826,11,0.6470588235294118

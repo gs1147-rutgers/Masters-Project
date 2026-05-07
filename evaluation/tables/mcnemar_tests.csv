@@ -1,0 +1,4 @@
+model_A,model_B,A_right_B_wrong,A_wrong_B_right,chi2_cont_corr,p_value
+EffNetB0,TCSNet,1177,765,86.98300720906282,0.0
+EffNetB0,VIPEEGNet,545,1189,238.4365628604383,0.0
+TCSNet,VIPEEGNet,291,1347,679.502442002442,0.0
