@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python3 analysis/13_seizure_strict_plots.py)"
-    ]
-  }
-}
