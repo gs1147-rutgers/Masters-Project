@@ -26,11 +26,6 @@ N_BINS_CAL = 15            # equal-mass reliability bins
 N_BOOTSTRAP = 2000
 RNG_SEED = 2024
 
-# Model architecture metadata (params / FLOPs are reference values from the
-# upstream architectures used by each pipeline — see compute_cost script).
-# We do NOT instantiate the networks here: the weights are 200+ MB each and
-# loading them pulls in Keras + PyTorch. These numbers are documented and
-# reproducible from the architecture papers / official repos.
 ARCH_META = {
     "EffNetB0": {
         "backbone": "EfficientNetB0",

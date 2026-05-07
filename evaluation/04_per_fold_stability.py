@@ -1,16 +1,4 @@
-"""
-Step 4 — Per-fold stability of the operating point.
 
-Population-level numbers can hide a model whose 95 %-recall threshold
-is 0.12 on one fold and 0.71 on another.  In a new hospital cohort
-that operating point will not transfer.
-
-For every (model, fold, target ∈ {0.90, 0.95, 0.99}) we compute:
-    threshold needed to hit the target inside that fold,
-    and the precision/specificity/FP that result.
-
-We also compute per-fold AUROC and AUPRC for the boxplot in step 5.
-"""
 import numpy as np
 import pandas as pd
 from pathlib import Path

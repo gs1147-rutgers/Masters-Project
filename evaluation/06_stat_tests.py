@@ -1,20 +1,4 @@
-"""
-Step 6 — Statistical rigour.
 
-(a) DeLong's test for pairwise differences in AUROC, with Z-statistic
-    and two-sided p-value.  Implementation follows Sun & Xu (2014) —
-    O(N log N) using mid-rank arrays.
-
-(b) McNemar's test at the recall=0.95 operating point of each model.
-    Compares paired binary correctness on the same EEGs.  Reported with
-    continuity correction.
-
-(c) Bootstrap 95 % CIs on AUROC, AUPRC, recall-pinned precision and FP.
-    We do not have patient IDs, so we cluster-bootstrap *by fold* (B=1000
-    resamples of the five fold IDs with replacement) — this respects
-    the patient-disjoint CV design and is more conservative than naive
-    EEG-level resampling.  Limitation noted in the report.
-"""
 import numpy as np
 import pandas as pd
 from pathlib import Path
@@ -99,41 +83,6 @@ for r in delong_rows:
     print(f"  {r['model_A']:>9} vs {r['model_B']:<9}  "
           f"ΔAUC = {r['diff_A_minus_B']:+.4f}   Z = {r['Z']:+.3f}   "
           f"p = {r['p_value']:.4g}")
-
-# ---------------------- (b) McNemar at S=0.95 ----------------------
-def mcnemar_p(b, c):
-    n = b + c
-    if n == 0:
-        return np.nan, 1.0
-    chi2 = (abs(b - c) - 1) ** 2 / n
-    p = 1 - stats.chi2.cdf(chi2, df=1)
-    return chi2, p
-
-# build {model: hard predictions at its 0.95 threshold}
-hard = {}
-for m in models:
-    tau = float(ops[(ops.model == m) & (ops.target_recall == 0.95)]["threshold"].iloc[0])
-    hard[m] = (preds[m] >= tau).astype(int)
-
-mcnemar_rows = []
-for i in range(len(models)):
-    for j in range(i + 1, len(models)):
-        a, b = models[i], models[j]
-        ca = (hard[a] == y).astype(int)
-        cb = (hard[b] == y).astype(int)
-        b_disc = int(((ca == 1) & (cb == 0)).sum())   # A right, B wrong
-        c_disc = int(((ca == 0) & (cb == 1)).sum())
-        chi2, p = mcnemar_p(b_disc, c_disc)
-        mcnemar_rows.append({"model_A": a, "model_B": b,
-                             "A_right_B_wrong": b_disc,
-                             "A_wrong_B_right": c_disc,
-                             "chi2_cont_corr": chi2, "p_value": p})
-pd.DataFrame(mcnemar_rows).to_csv(OUT / "mcnemar_tests.csv", index=False)
-print("\nMcNemar's tests at recall=0.95 operating points:")
-for r in mcnemar_rows:
-    print(f"  {r['model_A']:>9} vs {r['model_B']:<9}  "
-          f"b={r['A_right_B_wrong']:>4}  c={r['A_wrong_B_right']:>4}  "
-          f"χ²={r['chi2_cont_corr']:.3f}   p={r['p_value']:.4g}")
 
 # ---------------------- (c) Cluster bootstrap ----------------------
 B = 1000

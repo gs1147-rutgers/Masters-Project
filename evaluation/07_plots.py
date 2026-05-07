@@ -1,17 +1,4 @@
-"""
-Step 7 — All clinical figures.
 
-Outputs (figures/):
-    fig01_roc.png                — ROC for the three models + AUROC
-    fig02_pr.png                 — Precision-Recall + AUPRC
-    fig03_det.png                — DET (FNR vs FPR on log-log)
-    fig04_threshold_overlay.png  — Sens / Spec / Prec vs threshold (3-panel)
-    fig05_recall_pinned_bars.png — FP and NNR at recall = 0.95 / 0.99
-    fig06_per_fold_box.png       — AUROC and AUPRC boxplots over folds
-    fig07_threshold_drift.png    — per-fold operating threshold for each target
-    fig08_failure_modes.png      — stacked bar: where do FNs go at R=0.95?
-    fig09_roc_zoom.png           — ROC zoomed to high-sensitivity corner
-"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

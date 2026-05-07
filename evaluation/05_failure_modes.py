@@ -1,21 +1,4 @@
-"""
-Step 5 — Failure-mode analysis at the chosen operating point.
 
-A model that fails into a related IIIC pattern (LPD/GPD/LRDA/GRDA) is
-much safer than one that calls the missed seizure "Other" — the
-clinician would still likely flag the related-pattern alert for review.
-
-For each model at recall = 0.95 we:
-  1. find the operating threshold,
-  2. take all FN EEGs (true seizure but P(Seizure) < τ),
-  3. record the model's argmax class for those EEGs,
-  4. partition into 'near-miss' (LPD/GPD/LRDA/GRDA) vs 'total miss'
-     (Other).
-
-Outputs:
-    tables/missed_seizure_argmax.csv  — per-model class breakdown
-    tables/missed_seizure_eegs.csv    — per-EEG list of missed seizures
-"""
 import numpy as np
 import pandas as pd
 from pathlib import Path

@@ -1,31 +1,4 @@
-"""Soft-label analysis (concern #2).
 
-The soft labels yt (vote shares across 6 IIIC patterns) carry far more
-information than y_true = (argmax(yt) == 0).  This script reports:
-
-A. Soft-label fit quality
-   - Top-1 cross-entropy CE_hard(p, y_hard)
-   - Soft-label cross-entropy CE_soft(p, yt)  [-> E_yt[ -log p ]]
-   - Symmetric KL divergence between p and yt
-   These are reported globally and per fold.
-
-B. Performance stratified by inter-rater agreement
-   For seizure-majority cases (y_true = 1), bin by seizure_vote_share:
-     [0.50, 0.65), [0.65, 0.80), [0.80, 1.00].
-   At a fixed recall=0.95 threshold (tuned on the full set), we compute
-   sensitivity per stratum.  This separates "easy" seizures (everyone
-   agreed) from "ambiguous" seizures.
-
-C. Are the missed seizures the same EEGs the experts found ambiguous?
-   For each model, compute Jaccard(missed_at_R=0.95, ambiguous_seizures)
-   and the mean seizure_vote_share of missed vs caught seizures.
-   Bootstrap a 95% CI for the mean-vote-share difference.
-
-D. Concordance of misses across models
-   For pairs (TCSNet, VIPEEGNet, EffNetB0), what fraction of missed
-   seizures are shared?  Are models failing on the same hard cases or
-   on different kinds of cases?
-"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

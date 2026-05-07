@@ -1,12 +1,4 @@
-"""Confidence-stratified accuracy (overconfidence audit).
 
-Bin samples by max(softmax) over the 6 classes, into deciles of
-confidence.  Plot accuracy (argmax-pred == majority-class) per bin.
-This is the multi-class analogue of a calibration plot.
-
-Extracted from the prior `eval/04_heterogeneity.py` so this folder
-contains the confidence-stratified evaluation as a standalone step.
-"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

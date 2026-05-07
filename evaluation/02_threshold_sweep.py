@@ -1,23 +1,4 @@
-"""
-Step 2 — Threshold sweep across all 1,000 thresholds in [0, 1]
-plus the data-driven set of unique p_seizure values.
 
-For each (model, threshold) we record TP/FP/FN/TN and derive:
-    Sensitivity (Recall, TPR) = TP / (TP+FN)
-    Specificity (TNR)         = TN / (TN+FP)
-    FPR                       = 1 - Specificity
-    Precision (PPV)           = TP / (TP+FP)
-    NPV                       = TN / (TN+FN)
-    F1, F2 (recall-weighted), Youden's J = Sens+Spec-1
-    NNR (Number Needed to Review) = 1 / Precision
-    Alarms_per_hour_proxy = FP / N_negatives  (since these are 50-s
-        windows; a clinic-time conversion needs absolute clip count
-        which we report as alarms/100 negatives in the CSV).
-
-Outputs:
-    tables/threshold_sweep_<model>.csv  — full sweep, one per model
-    tables/auc_summary.csv              — AUROC and AUPRC per model
-"""
 import numpy as np
 import pandas as pd
 from pathlib import Path

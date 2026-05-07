@@ -1,19 +1,4 @@
-"""
-Step 1 — Build the long-form table for clinical seizure evaluation.
 
-One row per (model, EEG). Columns:
-    model       — 'EffNetB0' | 'TCSNet' | 'VIPEEGNet'
-    eeg_id      — int, unique EEG identifier
-    fold_id     — int 0..4, patient-disjoint CV fold
-    p_seizure   — model's predicted P(Seizure) (softmax column 0)
-    y_true      — 1 if expert majority (yhard) is Seizure, else 0
-    yt_seizure  — soft label P(Seizure) from expert votes
-    yhard_alt   — argmax of yt for missed-seizure failure-mode analysis
-                   (0=Seizure, 1=LPD, 2=GPD, 3=LRDA, 4=GRDA, 5=Other)
-
-Source: analysis/oof_per_eeg.npz (already aggregates the 5 folds and
-aligns the three models on the shared 5,939 HQ EEGs).
-"""
 import numpy as np
 import pandas as pd
 from pathlib import Path

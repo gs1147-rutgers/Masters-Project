@@ -1,14 +1,4 @@
-"""
-Step 3 — Recall-pinned operating-point table.
 
-For each (model, target recall ∈ {0.90, 0.95, 0.99}):
-    pick the highest threshold τ that achieves sensitivity >= target,
-    report the resulting FN/FP/PPV/Specificity/NNR.
-
-Highest τ that satisfies the constraint = fewest false alarms while
-still hitting the recall floor — that is the clinically relevant
-operating choice.
-"""
 import numpy as np
 import pandas as pd
 from pathlib import Path

@@ -1,17 +1,4 @@
-"""Comprehensive calibration analysis (concern #1).
 
-For each model:
-  - Brier score (binary seizure-vs-rest)
-  - ECE (equal-mass binning, 15 bins)
-  - MCE
-  - Reliability diagrams + a tabular reliability dump
-  - Post-hoc calibration on a held-out fold:
-      * Platt (logistic) scaling
-      * isotonic regression
-      * temperature scaling on the 6-class raw logits, transferred to seizure
-  - Does post-hoc calibration close the τ-drift gap (recall-pinned threshold
-    variance across folds)?  This is the headline question.
-"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
